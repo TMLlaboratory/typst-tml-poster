@@ -61,6 +61,25 @@
   body,
 )
 
+// ── reference list ───────────────────────────────────────────────────────
+//
+// 参考文献リスト（IEEE番号順）。enum の "+" マーカーで番号 [1],[2]... が
+// 自動で振られる。本文中の引用は手書きで [1] のように書く。
+//
+//   #let sec-references = reference-list[
+//     + T. G. Dietterich and G. Bakiri, ``Solving multiclass ...,''
+//       _J. Artif. Intell. Res._, vol. 2, pp. 263–286, 1995.
+//     + 雲居 玄道, 他, ``...,'' _Int. J. Neural Syst._, vol. 33, 2023.
+//   ]
+//
+// 文献数が多いときは cols: 2 で2段組にできる。
+#let reference-list(body, size: 18pt, cols: 1) = {
+  set text(size: size, fill: tml-text)
+  set par(leading: 0.5em, spacing: 0.55em)
+  set enum(numbering: "[1]", body-indent: 0.5em, indent: 0pt)
+  if cols == 1 { body } else { columns(cols, body) }
+}
+
 // ── poster body ───────────────────────────────────────────────────────────
 //
 // flow: false（デフォルト）= グリッドモード: 同じ行のボックスは高さが揃う
@@ -100,7 +119,7 @@
     grid(
       columns: (1fr, 1fr),
       column-gutter: 1.5cm,
-      row-gutter: 1.5cm,
+      row-gutter: 1.1cm,
       ..cells,
     )
 
@@ -232,7 +251,7 @@
 
   block(
     width: 100%,
-    inset: (x: 2cm, top: 14.5cm, bottom: 4.8cm),
+    inset: (x: 2cm, top: 12.5cm, bottom: 2.8cm),
     body,
   )
 }

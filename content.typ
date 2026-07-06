@@ -1,7 +1,7 @@
 // ======================================================================
 // content.typ — ★ここだけ書き換えればポスターが完成します
 // ======================================================================
-#import "template/tml-poster.typ": highlight-box
+#import "template/tml-poster.typ": highlight-box, reference-list
 #import "template/colors.typ": tml-gray, tml-accent, tml-blue, tml-light
 
 // ── メタ情報（必ず書き換えてください） ────────────────────────────────
@@ -19,7 +19,7 @@
 #let sec-background = [
   多クラス分類問題（クラス数 $M$）に対して，
   *誤り訂正出力符号化*（ECOC）は $n$ 個のバイナリ分類器の出力を組み合わせる
-  アンサンブル学習の枠組みである．
+  アンサンブル学習の枠組みである [1]．
   各クラス $c_j$ に符号語 $bold(m)_j in {-1,+1}^n$ を割り当てる．
 
   #figure(
@@ -58,7 +58,7 @@
   )
 
   $r$ は確率スコアの単調増加関数であり，
-  $d_"min"$ が大きいほど誤り耐性が高い．
+  $d_"min"$ が大きいほど誤り耐性が高い [2]．
 ]
 
 #let sec-experiment = [
@@ -151,4 +151,17 @@
       #text(size: 17pt, fill: tml-gray)[10.1142/S0129065723500156]
     ],
   )
+]
+
+// ── 参考文献 ────────────────────────────────────────────────────────────
+// reference-list[ + 文献1  + 文献2 ... ] で番号 [1],[2]... が自動採番されます。
+// 本文中の引用は [1] のように手書きし、リストの並び順に合わせてください。
+
+#let sec-references = reference-list[
+  + T. G. Dietterich and G. Bakiri, ``Solving multiclass learning problems
+    via error-correcting output codes,'' _J. Artif. Intell. Res._, vol. 2,
+    pp. 263–286, 1995.
+  + 雲居 玄道, 八木 秀樹, 小林 学, 後藤 正幸, 平澤 茂一, ``雑音・無雑音
+    バイナリ分類器に基づく誤り訂正出力符号化の性能評価,''
+    _Int. J. Neural Syst._, vol. 33, no. 5, 2023.
 ]
