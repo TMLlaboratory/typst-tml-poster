@@ -83,8 +83,8 @@ typst watch poster.typ
 
 ### セクション内容
 
-各セクション（`sec-background`, `sec-method`, `sec-results`, `sec-conclusion`）を  
-Typst マークアップで記述します。
+各セクション（`sec-background`, `sec-method`, `sec-results`, `sec-conclusion`,
+`sec-references`）を Typst マークアップで記述します。
 
 ```typst
 #let sec-background = [
@@ -108,6 +108,33 @@ Typst マークアップで記述します。
   )
 ]
 ```
+
+### 参考文献
+
+`reference-list` を使うと IEEE 番号順（`[1]`, `[2]`, ...）の文献リストが
+書けます。番号は `+` の順番で自動採番されるので，手で番号を振る必要は
+ありません。本文中の引用は `[1]` のように手書きし，リストの並び順と
+合わせてください。
+
+```typst
+#let sec-references = reference-list[
+  + T. G. Dietterich and G. Bakiri, ``Solving multiclass learning problems
+    via error-correcting output codes,'' _J. Artif. Intell. Res._, vol. 2,
+    pp. 263–286, 1995.
+  + 著者名, ``タイトル,'' _誌名_, vol. X, no. Y, pp. Z, 年.
+]
+```
+
+そして `poster.typ` の `#poster-body(...)` に全幅で追加します：
+
+```typst
+section([参考文献], sec-references, span: 2),
+```
+
+> **注意**: `` `` `` と `''` を使うと引用符が “ ” のように正しく表示されます
+> （Typst では `"` をそのまま使うと直立引用符になります）。
+>
+> 文献数が多い場合は `reference-list(cols: 2)[...]` で 2 段組にできます。
 
 ### レイアウト変更（`poster.typ` の末尾）
 

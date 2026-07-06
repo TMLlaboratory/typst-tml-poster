@@ -29,4 +29,7 @@
 
   // 行3：全幅・アクセントカラー
   section([まとめ & 今後の課題], sec-conclusion, span: 2, accent: true),
+
+  // 行4：参考文献（全幅）
+  section([参考文献], sec-references, span: 2),
 )
